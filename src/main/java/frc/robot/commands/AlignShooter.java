@@ -1,3 +1,9 @@
+// Description: 
+// Orients the robot towards the upper hub using the limelight.
+// Runs the flywheel at velocities necessary to score and
+// rumbles the Xbox controller to let the operator know it's ready
+
+
 package frc.robot.commands;
 
 import com.revrobotics.CANSparkMax.ControlType;

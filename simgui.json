@@ -77,6 +77,9 @@
     },
     "Shuffleboard": {
       "Hanger": {
+        "Settings": {
+          "open": true
+        },
         "open": true
       },
       "open": true

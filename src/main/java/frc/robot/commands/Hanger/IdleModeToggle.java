@@ -1,3 +1,7 @@
+// Description:
+// Toggles the idle mode of the hanger motors between brake or coast
+
+
 package frc.robot.commands.hanger;
 
 import edu.wpi.first.wpilibj.Timer;

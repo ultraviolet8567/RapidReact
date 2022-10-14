@@ -1,3 +1,8 @@
+// Description:
+// Runs the conveyor motors to raise the ball to the range of the flywheels
+// that launch the ball. Turns off the conveyor and the flywheels when stopped
+
+
 package frc.robot.commands;
 
 import com.revrobotics.CANSparkMax.ControlType;
@@ -23,7 +28,6 @@ public class Shoot extends CommandBase {
     @Override
     public void initialize() {
         m_collection.runConveyor(Constants.conveyorSpeed, ControlType.kVelocity);
-        // m_shooter.setMode("Fender");
     }
 
     // Called every time the scheduler runs while the command is scheduled.

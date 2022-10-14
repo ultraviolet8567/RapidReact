@@ -1,3 +1,10 @@
+// Description:
+// Operates the robot's drivetrain based on the mode
+// Single stick - robot moves as if the left joystick is an arcade joystick
+// Split control - left joystick controls forward/backward velocity, right joystick controls rotation
+// Tank drive - each joystick controls one side of the drivetrain
+
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;

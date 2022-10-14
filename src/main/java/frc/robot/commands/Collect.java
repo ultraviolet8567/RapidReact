@@ -1,3 +1,9 @@
+// Description: 
+// Extends the intake and runs the motors until the photoelectric
+// sensors detects the ball has reached the corect position in the
+// storage tower
+
+
 package frc.robot.commands;
 
 import static frc.robot.subsystems.Collection.Status.*;

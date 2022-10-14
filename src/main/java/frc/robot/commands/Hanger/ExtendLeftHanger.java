@@ -1,3 +1,7 @@
+// Description:
+// Runs the motor to raise the hanger arm on the left side
+
+
 package frc.robot.commands.hanger;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;

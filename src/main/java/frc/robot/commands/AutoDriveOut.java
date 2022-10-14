@@ -1,3 +1,8 @@
+// Description: 
+// The "drive out" autonomous program, in which the robot
+// just drives out of the starting area
+
+
 package frc.robot.commands;
 
 import java.util.Map;

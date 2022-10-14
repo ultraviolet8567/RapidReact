@@ -1,3 +1,8 @@
+// Description:
+// Changes the direction of the collection motors
+// used to eject a ball if necessary
+
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;

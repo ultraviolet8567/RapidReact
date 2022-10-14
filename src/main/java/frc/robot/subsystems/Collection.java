@@ -84,7 +84,7 @@ public class Collection extends SubsystemBase {
         detectedTop.setBoolean(ballTop());
         detectedBottom.setBoolean(ballBottom());
 
-        // directionReversed = reversedToggle.getBoolean(directionReversed);
+        directionReversed = reversedToggle.getBoolean(directionReversed);
         intake.setInverted(!directionReversed);
         conveyor.setInverted(directionReversed);
     }

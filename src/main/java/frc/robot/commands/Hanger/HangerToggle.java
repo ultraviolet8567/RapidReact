@@ -1,3 +1,7 @@
+// Description:
+// Toggles the speed mode of the hanger motors
+
+
 package frc.robot.commands.hanger;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;

@@ -1,3 +1,9 @@
+// Description: 
+// The "two ball" autonomous program, in which the robot drives out of the
+// starting area and collects a field ball, returns to the upper hub and
+// shoots both balls before once again exiting the starting zone
+
+
 package frc.robot.commands;
 
 import com.revrobotics.CANSparkMax.ControlType;

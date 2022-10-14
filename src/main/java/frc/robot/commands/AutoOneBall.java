@@ -1,3 +1,9 @@
+// Description: 
+// The "one ball" autonomous program, in which the robot
+// shoots its pre-loaded ball into the upper hub then
+// drives out of the starting area
+
+
 package frc.robot.commands;
 
 import java.util.Map;

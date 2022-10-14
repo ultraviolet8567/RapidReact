@@ -1,3 +1,8 @@
+// Description:
+// Manually sets the flywheel speed to the velocity
+// required for a fender shot (at the base of the hub)
+
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;

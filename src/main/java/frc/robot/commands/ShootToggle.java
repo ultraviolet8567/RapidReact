@@ -1,3 +1,8 @@
+// Description:
+// Toggles the flywheel velocity between off, lower hub fender,
+// uppder hub fender, calibration, and limelight shot
+
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
