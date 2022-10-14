@@ -1,19 +1,24 @@
+// Description: 
+// Extends the intake and runs the motors until the photoelectric
+// sensors detects the ball has reached the corect position in the
+// storage tower
+
+
 package frc.robot.commands;
+
+import static frc.robot.subsystems.Collection.Status.*;
 
 import com.revrobotics.CANSparkMax.ControlType;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.Collection;
 
 
 public class Collect extends CommandBase {
     private final Collection m_collection;
-    private boolean ballReachedBottom;
-    private boolean ballReachedTop;
-    private Timer timer;
+    private Timer timer = new Timer();
     
     public Collect(Collection subsystem) {
         m_collection = subsystem;
@@ -23,27 +28,20 @@ public class Collect extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        if (!m_collection.ballTop()) { m_collection.runConveyor(Constants.conveyorSpeed, ControlType.kVelocity); }
-        if (!m_collection.ballBottom()) { m_collection.runIntake(Constants.intakeSpeed, ControlType.kVelocity); }
+        m_collection.extend();
+        m_collection.runConveyor(Constants.conveyorSpeed, ControlType.kVelocity);
 
-        ballReachedTop = false;
-        ballReachedBottom = false;
-
-        timer = new Timer();
+        timer.start();
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        if (m_collection.intakeStatus() == EXTENDED && timer.get() >= 0.5) {
+            m_collection.runIntake(Constants.intakeSpeed, ControlType.kVelocity);
+        }
         if (m_collection.ballTop()) {
             m_collection.runConveyor(0, ControlType.kVelocity);
-            ballReachedTop = true;
-        }
-        if (m_collection.ballBottom()) {
-            timer.start();
-        }
-        if (timer.get() >= 3) {
-            ballReachedBottom = true;
         }
     }
 
@@ -53,13 +51,13 @@ public class Collect extends CommandBase {
         m_collection.runIntake(0, ControlType.kVelocity);
         m_collection.runConveyor(0, ControlType.kVelocity);
 
-        RobotContainer.getInstance().m_shooter.setMode("Fender");
+        m_collection.retract();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return (ballReachedTop && ballReachedBottom);
+        return false;
     }
 
     @Override

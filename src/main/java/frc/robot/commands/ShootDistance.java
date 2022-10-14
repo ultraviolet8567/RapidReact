@@ -1,29 +1,30 @@
-package frc.robot.commands;
+// Description:
+// Manually sets the flywheel speed to the velocity
+// required for a fender shot (at the base of the hub)
 
-import com.revrobotics.CANSparkMax.ControlType;
+
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
-
-public class RunFlywheels extends CommandBase {
+public class ShootDistance extends CommandBase{
     private final Shooter m_shooter;
-    
-    public RunFlywheels(Shooter subsystem) {
+
+    public ShootDistance(Shooter subsystem) {
         m_shooter = subsystem;
         addRequirements(m_shooter);
     }
-
+    
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
+        m_shooter.setMode("Fender");
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_shooter.runBigFlywheel(m_shooter.flywheelSpeeds()[0], ControlType.kVelocity);
-        m_shooter.runSmallFlywheel(m_shooter.flywheelSpeeds()[1], ControlType.kVelocity);
     }
 
     // Called once the command ends or is interrupted.
@@ -34,12 +35,11 @@ public class RunFlywheels extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean runsWhenDisabled() {
         return false;
     }
-    
 }

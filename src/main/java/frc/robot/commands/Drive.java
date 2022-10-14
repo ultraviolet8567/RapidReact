@@ -1,3 +1,10 @@
+// Description:
+// Operates the robot's drivetrain based on the mode
+// Single stick - robot moves as if the left joystick is an arcade joystick
+// Split control - left joystick controls forward/backward velocity, right joystick controls rotation
+// Tank drive - each joystick controls one side of the drivetrain
+
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
@@ -8,7 +15,7 @@ import frc.robot.subsystems.Drivetrain;
 
 public class Drive extends CommandBase {
     private final Drivetrain m_drivetrain;
-    private final XboxController xbox = RobotContainer.getInstance().getXboxController();
+    private XboxController xbox;
     
     public Drive(Drivetrain subsystem) {
         m_drivetrain = subsystem;
@@ -18,6 +25,7 @@ public class Drive extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
+        xbox = RobotContainer.getInstance().getXboxController();
     }
 
     // Called every time the scheduler runs while the command is scheduled.

@@ -1,20 +1,24 @@
-package frc.robot.commands;
+// Description:
+// Toggles the speed mode of the hanger motors
+
+
+package frc.robot.commands.hanger;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Hanger;
 
-public class ShootFender extends CommandBase{
-    private final Shooter m_shooter;
+public class HangerToggle extends CommandBase {
+    private final Hanger m_hanger;
 
-    public ShootFender(Shooter subsystem) {
-        m_shooter = subsystem;
-        addRequirements(m_shooter);
+    public HangerToggle(Hanger subsystem) {
+        m_hanger = subsystem;
+        addRequirements(m_hanger);
     }
-    
+
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        m_shooter.setMode("Fender");
+        m_hanger.toggleMode();
     }
 
     // Called every time the scheduler runs while the command is scheduled.

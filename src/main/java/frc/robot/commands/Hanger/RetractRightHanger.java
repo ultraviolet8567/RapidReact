@@ -1,20 +1,25 @@
-package frc.robot.commands;
+// Description:
+// Runs the motor to lower the hanger arm on the left side
+
+
+package frc.robot.commands.hanger;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Hanger;
 
-public class ShootLower extends CommandBase{
-    private final Shooter m_shooter;
 
-    public ShootLower(Shooter subsystem) {
-        m_shooter = subsystem;
-        addRequirements(m_shooter);
+public class RetractRightHanger extends CommandBase {
+    private final Hanger m_hanger;
+
+    public RetractRightHanger(Hanger subsystem) {
+        m_hanger = subsystem;
+        addRequirements(m_hanger);
     }
-    
+
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        m_shooter.setMode("Lower hub");
+        m_hanger.runRightHanger(true);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -25,12 +30,13 @@ public class ShootLower extends CommandBase{
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        m_hanger.stopRightHanger();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
     }
 
     @Override
