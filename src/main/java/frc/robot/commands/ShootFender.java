@@ -8,10 +8,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
-public class ShootDistance extends CommandBase{
+public class ShootFender extends CommandBase{
     private final Shooter m_shooter;
 
-    public ShootDistance(Shooter subsystem) {
+    public ShootFender(Shooter subsystem) {
         m_shooter = subsystem;
         addRequirements(m_shooter);
     }

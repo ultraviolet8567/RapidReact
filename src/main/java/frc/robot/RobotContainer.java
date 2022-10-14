@@ -123,7 +123,7 @@ public class RobotContainer {
         leftBumper.toggleWhenPressed(new Shoot(m_shooter, m_collection), true);
 
         final JoystickButton buttonB = new JoystickButton(xboxController, XboxController.Button.kB.value);
-        buttonB.whenPressed(new ShootDistance(m_shooter), true);
+        buttonB.whenPressed(new ShootFender(m_shooter), true);
 
         if (Constants.MODE == RobotMode.TESTING) {
             final JoystickButton buttonX = new JoystickButton(xboxController, XboxController.Button.kX.value);
