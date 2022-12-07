@@ -5,7 +5,7 @@
 // Tank drive - each joystick controls one side of the drivetrain
 
 
-package frc.robot.commands;
+package frc.robot.commands.drive;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -14,57 +14,43 @@ import frc.robot.subsystems.Drivetrain;
 
 
 public class Drive extends CommandBase {
-    private final Drivetrain m_drivetrain;
-    private XboxController xbox;
+    private Drivetrain m_drivetrain;
+    protected XboxController xbox;
+    private Drive drivetype;
     
     public Drive(Drivetrain subsystem) {
         m_drivetrain = subsystem;
         addRequirements(m_drivetrain);
+        if (subsystem.isTankDrive()) {
+            drivetype = new Tank(subsystem);
+        }
+        else if (subsystem.isSingleStickDrive()) {
+            drivetype = new SingleStick(subsystem);
+        }
+        else {
+            drivetype = new SplitControl(subsystem);
+        }
     }
+
+    public Drive() {}
 
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
         xbox = RobotContainer.getInstance().getXboxController();
+        drivetype.initialize();
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (m_drivetrain.isSingleStickDrive()) {
-            if (Math.abs(xbox.getLeftY()) > 0.1 || Math.abs(xbox.getLeftX()) > 0.1) {
-                // Normal single stick drive
-                m_drivetrain.getDifferentialDrive().arcadeDrive(
-                    -xbox.getLeftY(),
-                    xbox.getLeftX(),
-                    true);
-            }
-            else {
-                // Fine-tuning single stick drive
-                m_drivetrain.getDifferentialDrive().arcadeDrive(
-                    -0.5 * xbox.getRightY(),
-                    0.5 * xbox.getRightX(),
-                    true);
-            }
-        }
-        else if (m_drivetrain.isTankDrive()) {
-            m_drivetrain.getDifferentialDrive().tankDrive(
-                -xbox.getLeftY(),
-                -xbox.getRightY(),
-                true);
-        }
-        else {
-            // Split control drive
-            m_drivetrain.getDifferentialDrive().arcadeDrive(
-                -xbox.getLeftY(),
-                xbox.getRightX(),
-                true);
-        }
+       drivetype.execute();
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        drivetype.end(interrupted);
     }
 
     // Returns true when the command should end.
