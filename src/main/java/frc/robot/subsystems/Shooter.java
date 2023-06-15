@@ -120,9 +120,9 @@ public class Shooter extends SubsystemBase {
                 case CALIBRATION:
                     speeds = new double[] { calibrationSpeed, calibrationSpeed * Constants.flywheelRatio };
                     break;
-                case LIMELIGHT:
-                    speeds = RobotContainer.getInstance().m_limelight.calculatedSpeeds();
-                    break;
+                // case LIMELIGHT:
+                //     speeds = RobotContainer.getInstance().m_limelight.calculatedSpeeds();
+                //     break;
                 default:
                     speeds = new double[] { 0, 0 };
                     break;
