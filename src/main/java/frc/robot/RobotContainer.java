@@ -47,7 +47,7 @@ public class RobotContainer {
     public final Shooter m_shooter = new Shooter();
     public final Drivetrain m_drivetrain = new Drivetrain();
     public final Collection m_collection = new Collection();
-    public final Hanger m_hanger = new Hanger();
+    // public final Hanger m_hanger = new Hanger();
     // public final Limelight m_limelight = new Limelight();
 
     // Joysticks
